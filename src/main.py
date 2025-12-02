@@ -44,18 +44,31 @@ def list_posts(
 #     return {"data": BLOG_POST}
 
 
-#  Path + query paraneters
+#  Path + query paraneters - Ricardo solution
 @app.get(path="/posts/{post_id}")
 def get_posts(
-    post_id: int, include_content: bool
+    post_id: int, include_content: bool = Query(default=True, description="Incluir o no el contenido")
 ) -> dict[str, int | str] | dict[str, dict[str, int | str]] | dict[str, str]:
     for post in BLOG_POST:
         if post["id"] == post_id:
-            if include_content:
-                return {"data": post}
-            if include_content is False:
+            if not include_content:
                 return {"id": post["id"], "title": post["title"]}
+            return {"data": post}
     return {"error": "Post no encontrado"}
+
+
+# #  Path + query paraneters
+# @app.get(path="/posts/{post_id}")
+# def get_posts(
+#     post_id: int, include_content: bool
+# ) -> dict[str, int | str] | dict[str, dict[str, int | str]] | dict[str, str]:
+#     for post in BLOG_POST:
+#         if post["id"] == post_id:
+#             if include_content:
+#                 return {"data": post}
+#             if include_content is False:
+#                 return {"id": post["id"], "title": post["title"]}
+#     return {"error": "Post no encontrado"}
 
 
 # #  Path paraneters
