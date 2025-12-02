@@ -5,9 +5,25 @@ from fastapi import FastAPI
 # 
 #  ______________________
 
+app = FastAPI (title="Mini Blog")
 
-app = FastAPI()
 
 @app.get("/")
-def main():
-    return {"message": "Hello World"}
+def home():
+    return {'message': 'Bienvenidos a Mini Blog'}
+
+
+
+
+# app = FastAPI()
+
+# @app.get("/")
+# def main():
+#     return {"message": "Hello World"}
+
+# 
+#  Import LIBRARIES
+from fastapi import FastAPI
+#  Import FILES
+# 
+#  ______________________
