@@ -35,8 +35,13 @@ uv run fastapi deploy
 [FastAPI - Sección 3.0 - Introducción a la sección Ricardo Cuéllar](https://www.youtube.com/watch?v=WIVB6k5GSPo)  
 [FastAPI - Sección 3.1 - ¿Qué es FastAPI y por qué aprenderlo? Ricardo Cuéllar](https://www.youtube.com/watch?v=cHVXJtVx2O0)  
 [FastAPI - Sección 3.2 - Documentación y enlaces importantes Ricardo Cuéllar](https://www.youtube.com/watch?v=2zaISn1jlCY)  
-[[FastAPI - Sección 3.1 - ¿Qué es FastAPI y por qué aprenderlo? Ricardo Cuéllar](https://www.youtube.com/watch?v=cHVXJtVx2O0](https://www.youtube.com/watch?v=C6rRTqFogKA)  
+[FastAPI - Sección 3.3 - Instalar FastAPI Ricardo Cuéllar](https://www.youtube.com/watch?v=C6rRTqFogKA)  
 [FastAPI - Sección 3.4 - Nuestro primer endpoint (GET) Ricardo Cuéllar](https://www.youtube.com/watch?v=NI3EIlTyTqQ)  
+[FastAPI - Sección 3.5 - Endpoint Get con datos Ricardo Cuéllar](https://www.youtube.com/watch?v=xOI_inTAecY)   
+[FastAPI - Sección 3.6 - Query params Ricardo Cuéllar](https://www.youtube.com/watch?v=Ih8_1zXd3uI)  
+
+
+
 
 
 
