@@ -39,6 +39,8 @@ uv run fastapi deploy
 [FastAPI - Sección 3.4 - Nuestro primer endpoint (GET) Ricardo Cuéllar](https://www.youtube.com/watch?v=NI3EIlTyTqQ)  
 [FastAPI - Sección 3.5 - Endpoint Get con datos Ricardo Cuéllar](https://www.youtube.com/watch?v=xOI_inTAecY)   
 [FastAPI - Sección 3.6 - Query params Ricardo Cuéllar](https://www.youtube.com/watch?v=Ih8_1zXd3uI)  
+[FastAPI - Sección 3.7 - Path parameters Ricardo Cuéllar](https://www.youtube.com/watch?v=vXiskIzvlkI)  
+
 
 
 
