@@ -32,6 +32,7 @@ uv run fastapi deploy
 - [FastAPI Cloud](https://fastapicloud.com)
 
 ## Freely adapted for educational purposes from:
+
 [FastAPI - Sección 3.0 - Introducción a la sección Ricardo Cuéllar](https://www.youtube.com/watch?v=WIVB6k5GSPo)  
 [FastAPI - Sección 3.1 - ¿Qué es FastAPI y por qué aprenderlo? Ricardo Cuéllar](https://www.youtube.com/watch?v=cHVXJtVx2O0)  
 [FastAPI - Sección 3.2 - Documentación y enlaces importantes Ricardo Cuéllar](https://www.youtube.com/watch?v=2zaISn1jlCY)  
@@ -42,7 +43,10 @@ uv run fastapi deploy
 [FastAPI - Sección 3.7 - Path parameters Ricardo Cuéllar](https://www.youtube.com/watch?v=vXiskIzvlkI)  
 [FastAPI - Sección 3.8 - Ejercicio práctico QueryParams Ricardo Cuéllar](https://www.youtube.com/watch?v=eJ9L0DblPNY)  
 [FastAPI - Sección 3.9 - Métodos HTTP y códigos de estatus Ricardo Cuéllar](vbBtdS42V0Y)  
-
+[FastAPI - Sección 3.11 - Probando endpoints con Curl y Postman Ricardo Cuéllar](https://www.youtube.com/watch?v=_eZmA5ZlEcc)  
+[FastAPI - Sección 3.12 - Método PUT y HttpException Ricardo Cuéllar](https://www.youtube.com/watch?v=w6cFNmuSOLg)  
+[FastAPI - Sección 3.13 - Método DELETE Ricardo Cuéllar](https://www.youtube.com/watch?v=eWrtPidIbXo)  
+[FastAPI - Sección 3.14 - Documentación automática Ricardo Cuéllar](https://www.youtube.com/watch?v=w6cFNmuSOLg)  
 
 
 
