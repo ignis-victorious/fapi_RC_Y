@@ -4,8 +4,9 @@ from fastapi import Body, FastAPI, HTTPException, Query
 
 #  Import FILES
 from .data.post_db import BLOG_POST
-from .models.models import Post
+from .models.models import PostCreate, PostUpdate
 
+# PostBase
 #
 #  ______________________
 
@@ -43,10 +44,14 @@ def get_posts(
     return {"error": "Post no encontrado"}
 
 
-# POST
+# POST - Unprocessable: {"title": 12345,"content": 67890} - processable:{"title": "12345","content": "67890"}
 @app.post(path="/posts")
-def create_post(post: Post = Body(default=...)) -> dict[str, Post]:
-    return {"data": post}
+def create_post(post: PostCreate = Body(default=...)) -> dict[str, dict[str, int | str] | str]:
+    new_id: int = (int(BLOG_POST[-1]["id"]) + 1) if BLOG_POST else 1
+    new_post: dict[str, int | str] = {"id": new_id, "title": post.title, "content": post.content}
+    BLOG_POST.append(new_post)
+    return {"message": "Post creado", "data": new_post}
+    # return {"data": post}
 
 
 # # curl -X POST http://127.0.0.1:8000/posts -H "Content-Type: application/json" -d '{"title": "Nuevo post desde Curl", "content": "Mi nuevo post desde Curl"}'
@@ -66,17 +71,15 @@ def create_post(post: Post = Body(default=...)) -> dict[str, Post]:
 
 # PUT - {"title": "Hola desde FastAPI- (Actualizado con PUT)", "content": "Content actualizado"}
 @app.put(path="/posts/{post_id}")
-def update_post(post_id: int, data: dict[str, str | int] = Body(default=...)):
+def update_post(post_id: int, data: PostUpdate):
     for post in BLOG_POST:
         if post["id"] == post_id:
-            if "title" in data:
+            playload: dict[str, int | str] = data.model_dump(exclude_unset=True)
+            if "title" in playload:
                 post["title"] = data["title"]
-            if "content" in data:
+            if "content" in playload:
                 post["content"] = data["content"]
-            # if "title" in data:
-            #     post["title"] = data["title"]
-            # if "content" in data:
-            #     post["content"] = data["content"]
+
             return {"message": "Post actualizado", "data": post}
     raise HTTPException(status_code=404, detail="Post no encontrado")
     # return {"error": "No se encontro el post"}
