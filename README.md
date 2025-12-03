@@ -42,6 +42,8 @@ uv run fastapi deploy
 [FastAPI - Sección 3.7 - Path parameters Ricardo Cuéllar](https://www.youtube.com/watch?v=vXiskIzvlkI)  
 [FastAPI - Sección 3.8 - Ejercicio práctico QueryParams Ricardo Cuéllar](https://www.youtube.com/watch?v=eJ9L0DblPNY)  
 [FastAPI - Sección 3.9 - Métodos HTTP y códigos de estatus Ricardo Cuéllar](vbBtdS42V0Y)  
+[FastAPI - Sección 3.11 - Probando endpoints con Curl y Postman Ricardo Cuéllar](https://www.youtube.com/watch?v=_eZmA5ZlEcc)  
+[FastAPI - Sección 3.12 - Método PUT y HttpException Ricardo Cuéllar](https://www.youtube.com/watch?v=w6cFNmuSOLg)  
 
 
 
