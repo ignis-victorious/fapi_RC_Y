@@ -4,6 +4,7 @@ from fastapi import Body, FastAPI, HTTPException, Query
 
 #  Import FILES
 from .data.post_db import BLOG_POST
+from .models.models import Post
 
 #
 #  ______________________
@@ -42,19 +43,25 @@ def get_posts(
     return {"error": "Post no encontrado"}
 
 
-# curl -X POST http://127.0.0.1:8000/posts -H "Content-Type: application/json" -d '{"title": "Nuevo post desde Curl", "content": "Mi nuevo post desde Curl"}'
+# POST
 @app.post(path="/posts")
-def create_post(
-    post: dict[str, str | int] = Body(default=...),
-) -> dict[str, dict[str, int | str] | str] | dict[str, str]:
-    if "title" not in post or "content" not in post:
-        return {"error": "Title y Content son requeridos"}
-    if not str(post["title"]).strip():
-        return {"error": "Title no puede estar vacío"}
-    new_id: int = (int(BLOG_POST[-1]["id"]) + 1) if BLOG_POST else 1
-    new_post: dict[str, int | str] = {"id": new_id, "title": post["title"], "content": post["content"]}
-    BLOG_POST.append(new_post)
-    return {"message": "Post creado", "data": new_post}
+def create_post(post: Post = Body(default=...)) -> dict[str, Post]:
+    return {"data": post}
+
+
+# # curl -X POST http://127.0.0.1:8000/posts -H "Content-Type: application/json" -d '{"title": "Nuevo post desde Curl", "content": "Mi nuevo post desde Curl"}'
+# @app.post(path="/posts")
+# def create_post(
+#     post: dict[str, str | int] = Body(default=...),
+# ) -> dict[str, dict[str, int | str] | str] | dict[str, str]:
+#     if "title" not in post or "content" not in post:
+#         return {"error": "Title y Content son requeridos"}
+#     if not str(post["title"]).strip():
+#         return {"error": "Title no puede estar vacío"}
+#     new_id: int = (int(BLOG_POST[-1]["id"]) + 1) if BLOG_POST else 1
+#     new_post: dict[str, int | str] = {"id": new_id, "title": post["title"], "content": post["content"]}
+#     BLOG_POST.append(new_post)
+#     return {"message": "Post creado", "data": new_post}
 
 
 # PUT - {"title": "Hola desde FastAPI- (Actualizado con PUT)", "content": "Content actualizado"}
