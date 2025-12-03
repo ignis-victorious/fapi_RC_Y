@@ -47,6 +47,10 @@ uv run fastapi deploy
 [FastAPI - Sección 3.12 - Método PUT y HttpException Ricardo Cuéllar](https://www.youtube.com/watch?v=w6cFNmuSOLg)  
 [FastAPI - Sección 3.13 - Método DELETE Ricardo Cuéllar](https://www.youtube.com/watch?v=eWrtPidIbXo)  
 [FastAPI - Sección 3.14 - Documentación automática Ricardo Cuéllar](https://www.youtube.com/watch?v=w6cFNmuSOLg)  
+[FastAPI - Sección 3.14 - Documentación automática Ricardo Cuéllar](https://www.youtube.com/watch?v=DbY2KAuHymc)  
+[FastAPI - Sección 4.00 - Introducción a la sección 4 Ricardo Cuéllar](https://www.youtube.com/watch?v=-1MlrTJmrjc)  
+[FastAPI - Sección 4.1 - ¿Qué es Pydantic y por qué lo usa FastAPI Ricardo Cuéllar](https://www.youtube.com/watch?v=u-ITujhk2Ys)  
+[FastAPI - Sección 4.2 - Creando modelos básicos con Pydantic Ricardo Cuéllar](https://www.youtube.com/watch?v=Ojc3Iu_ciqY&t=25s)  
 
 
 

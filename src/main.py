@@ -75,6 +75,16 @@ def update_post(post_id: int, data: dict[str, str | int] = Body(default=...)):
     # return {"error": "No se encontro el post"}
 
 
+#  DELETE
+@app.delete(path="/posts/{post_id}", status_code=204)
+def delete_post(post_id: int) -> None:
+    for index, post in enumerate(BLOG_POST):
+        if post["id"] == post_id:
+            BLOG_POST.pop(index)
+            return
+    raise HTTPException(status_code=404, detail="Post no encontrado")
+
+
 #
 #  Import LIBRARIES
 # from fastapi import FastAPI
