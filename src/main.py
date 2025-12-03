@@ -1,6 +1,6 @@
 #
 #  Import LIBRARIES
-from fastapi import FastAPI, Query
+from fastapi import Body, FastAPI, HTTPException, Query
 
 #  Import FILES
 from .data.post_db import BLOG_POST
@@ -29,21 +29,6 @@ def list_posts(
     return {"data": BLOG_POST}
 
 
-#  Query Parameters with "for"
-# @app.get(path="/posts")
-# def list_posts(
-#     query_parm: str | None = Query(default=None, description="Texto para buscar por título"),
-# ) -> dict[str, list[dict[str, int | str]] | str | None]:
-#     if query_parm:
-#         results: list[dict[str, int | str]] = []
-#         for post in BLOG_POST:
-#             if query_parm.lower() in str(post["title"]).lower():
-#                 results.append(post)
-#         print(f"results={results}")
-#         return {"data": results, "query_parm": query_parm}
-#     return {"data": BLOG_POST}
-
-
 #  Path + query paraneters - Ricardo solution
 @app.get(path="/posts/{post_id}")
 def get_posts(
@@ -57,39 +42,38 @@ def get_posts(
     return {"error": "Post no encontrado"}
 
 
-# #  Path + query paraneters
-# @app.get(path="/posts/{post_id}")
-# def get_posts(
-#     post_id: int, include_content: bool
-# ) -> dict[str, int | str] | dict[str, dict[str, int | str]] | dict[str, str]:
-#     for post in BLOG_POST:
-#         if post["id"] == post_id:
-#             if include_content:
-#                 return {"data": post}
-#             if include_content is False:
-#                 return {"id": post["id"], "title": post["title"]}
-#     return {"error": "Post no encontrado"}
+# curl -X POST http://127.0.0.1:8000/posts -H "Content-Type: application/json" -d '{"title": "Nuevo post desde Curl", "content": "Mi nuevo post desde Curl"}'
+@app.post(path="/posts")
+def create_post(
+    post: dict[str, str | int] = Body(default=...),
+) -> dict[str, dict[str, int | str] | str] | dict[str, str]:
+    if "title" not in post or "content" not in post:
+        return {"error": "Title y Content son requeridos"}
+    if not str(post["title"]).strip():
+        return {"error": "Title no puede estar vacío"}
+    new_id: int = (int(BLOG_POST[-1]["id"]) + 1) if BLOG_POST else 1
+    new_post: dict[str, int | str] = {"id": new_id, "title": post["title"], "content": post["content"]}
+    BLOG_POST.append(new_post)
+    return {"message": "Post creado", "data": new_post}
 
 
-# #  Path paraneters
-# @app.get(path="/posts/{post_id}")
-# def get_posts(post_id: int) -> dict[str, dict[str, int | str]] | dict[str, str]:
-#     for post in BLOG_POST:
-#         if post["id"] == post_id:
-#             return {"data": post}
-#     return {"error": "Post no encontrado"}
+# PUT - {"title": "Hola desde FastAPI- (Actualizado con PUT)", "content": "Content actualizado"}
+@app.put(path="/posts/{post_id}")
+def update_post(post_id: int, data: dict[str, str | int] = Body(default=...)):
+    for post in BLOG_POST:
+        if post["id"] == post_id:
+            if "title" in data:
+                post["title"] = data["title"]
+            if "content" in data:
+                post["content"] = data["content"]
+            # if "title" in data:
+            #     post["title"] = data["title"]
+            # if "content" in data:
+            #     post["content"] = data["content"]
+            return {"message": "Post actualizado", "data": post}
+    raise HTTPException(status_code=404, detail="Post no encontrado")
+    # return {"error": "No se encontro el post"}
 
-
-# @app.get(path="/posts")
-# def list_posts() -> dict[str, list[dict[str, int | str]]]:
-#     return {"data": BLOG_POST}
-
-
-# app = FastAPI()
-
-# @app.get("/")
-# def main():
-#     return {"message": "Hello World"}
 
 #
 #  Import LIBRARIES
