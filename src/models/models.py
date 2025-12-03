@@ -8,6 +8,15 @@ from pydantic import BaseModel
 #  ______________________
 
 
-class Post(BaseModel):
+class PostBase(BaseModel):
+    title: str
+    content: str
+
+
+class PostCreate(PostBase):
+    pass
+
+
+class PostUpdate(BaseModel):
     title: str
     content: str
