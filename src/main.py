@@ -70,15 +70,20 @@ def create_post(post: PostCreate = Body(default=...)) -> dict[str, dict[str, int
 
 
 # PUT - {"title": "Hola desde FastAPI- (Actualizado con PUT)", "content": "Content actualizado"}
+#  {"title": "Titulo de prueba con Pydantic", "content": "Pydantic es genial"}
 @app.put(path="/posts/{post_id}")
-def update_post(post_id: int, data: PostUpdate):
+def update_post(post_id: int, data: PostUpdate) -> dict[str, dict[str, int | str] | str]:
     for post in BLOG_POST:
         if post["id"] == post_id:
             playload: dict[str, int | str] = data.model_dump(exclude_unset=True)
             if "title" in playload:
-                post["title"] = data["title"]
+                post["title"] = playload["title"]
+                # post["title"] = data.title
+                # post["title"] = data["title"]
             if "content" in playload:
-                post["content"] = data["content"]
+                post["content"] = playload["content"]
+                # post["content"] = data.content
+                # post["content"] = data["content"]
 
             return {"message": "Post actualizado", "data": post}
     raise HTTPException(status_code=404, detail="Post no encontrado")
