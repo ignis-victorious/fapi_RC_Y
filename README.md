@@ -51,10 +51,7 @@ uv run fastapi deploy
 [FastAPI - Sección 4.00 - Introducción a la sección 4 Ricardo Cuéllar](https://www.youtube.com/watch?v=-1MlrTJmrjc)  
 [FastAPI - Sección 4.1 - ¿Qué es Pydantic y por qué lo usa FastAPI Ricardo Cuéllar](https://www.youtube.com/watch?v=u-ITujhk2Ys)  
 [FastAPI - Sección 4.2 - Creando modelos básicos con Pydantic Ricardo Cuéllar](https://www.youtube.com/watch?v=Ojc3Iu_ciqY&t=25s)  
-
-
-[FastAPI - Sección 4.3 - Probando modelos base creados Ricardo Cuéllar]
-(https://www.youtube.com/watch?v=smg5cjbP-JI)  
+[FastAPI - Sección 4.3 - Probando modelos base creados Ricardo Cuéllar](https://www.youtube.com/watch?v=smg5cjbP-JI)   
 [FastAPI - Sección 4.4 - Validaciones automáticas con Pydantic Ricardo Cuéllar](https://www.youtube.com/watch?v=ZAiXuTo2lAo)  
 [FastAPI - Sección 4.5 - Campos opcionales y valores por defecto Ricardo Cuéllar](https://www.youtube.com/watch?v=8J8eXj18NxU)  
 [FastAPI - Sección 4.6 - Field y validaciones avanzadas Ricardo Cuéllar](https://www.youtube.com/watch?v=rZCuXGrO7Zg)  
