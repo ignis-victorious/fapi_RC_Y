@@ -10,7 +10,7 @@ from pydantic import BaseModel
 
 class PostBase(BaseModel):
     title: str
-    content: str
+    content: str = "Contenido no disponible"
 
 
 class PostCreate(PostBase):
@@ -19,4 +19,4 @@ class PostCreate(PostBase):
 
 class PostUpdate(BaseModel):
     title: str
-    content: str
+    content: str | None = None

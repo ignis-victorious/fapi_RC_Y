@@ -46,6 +46,8 @@ def get_posts(
 
 # POST - Unprocessable: {"title": 12345,"content": 67890} - processable:{"title": "12345","content": "67890"}
 #  {"title": "Titulo de prueba con Pydantic", "content": "Pydantic es genial"}
+# {"title": "Emme",  "content": "Este contenido es disponible"}
+# {"title": "Post solo titulo"}
 @app.post(path="/posts")
 def create_post(post: PostCreate = Body(default=...)) -> dict[str, dict[str, int | str] | str]:
     new_id: int = (int(BLOG_POST[-1]["id"]) + 1) if BLOG_POST else 1
@@ -55,56 +57,22 @@ def create_post(post: PostCreate = Body(default=...)) -> dict[str, dict[str, int
     # return {"data": post}
 
 
-# # curl -X POST http://127.0.0.1:8000/posts -H "Content-Type: application/json" -d '{"title": "Nuevo post desde Curl", "content": "Mi nuevo post desde Curl"}'
-# @app.post(path="/posts")
-# def create_post(
-#     post: dict[str, str | int] = Body(default=...),
-# ) -> dict[str, dict[str, int | str] | str] | dict[str, str]:
-#     if "title" not in post or "content" not in post:
-#         return {"error": "Title y Content son requeridos"}
-#     if not str(post["title"]).strip():
-#         return {"error": "Title no puede estar vacío"}
-#     new_id: int = (int(BLOG_POST[-1]["id"]) + 1) if BLOG_POST else 1
-#     new_post: dict[str, int | str] = {"id": new_id, "title": post["title"], "content": post["content"]}
-#     BLOG_POST.append(new_post)
-#     return {"message": "Post creado", "data": new_post}
-
-
 # PUT - {"title": "Hola desde FastAPI- (Actualizado con PUT)", "content": "Content actualizado"}
+#  {"title": "Prueba del PUT con Pydantic Y solamente el titulo!"}
 #  {"title": "Prueba del PUT con Pydantic", "content": "Esto contenido es actualizado!"}
 @app.put(path="/posts/{post_id}")
 def update_post(post_id: int, data: PostUpdate) -> dict[str, dict[str, int | str] | str]:
     for post in BLOG_POST:
         if post["id"] == post_id:
-            # Create the dictionary
-            payload: dict[str, int | str] = data.model_dump(exclude_unset=True)
-
-            # Loop through the payload and update the post dictionary directly
-            for key, value in payload.items():
-                post[key] = value
+            playload: dict[str, int | str] = data.model_dump(exclude_unset=True)
+            if "title" in playload:
+                post["title"] = playload["title"]
+            if "content" in playload:
+                post["content"] = playload["content"]
 
             return {"message": "Post actualizado", "data": post}
-
     raise HTTPException(status_code=404, detail="Post no encontrado")
-
-
-# @app.put(path="/posts/{post_id}")
-# def update_post(post_id: int, data: PostUpdate) -> dict[str, dict[str, int | str] | str]:
-#     for post in BLOG_POST:
-#         if post["id"] == post_id:
-#             playload: dict[str, int | str] = data.model_dump(exclude_unset=True)
-#             if "title" in playload:
-#                 post["title"] = playload["title"]
-#                 # post["title"] = data.title
-#                 # post["title"] = data["title"]
-#             if "content" in playload:
-#                 post["content"] = playload["content"]
-#                 # post["content"] = data.content
-#                 # post["content"] = data["content"]
-
-#             return {"message": "Post actualizado", "data": post}
-#     raise HTTPException(status_code=404, detail="Post no encontrado")
-#     # return {"error": "No se encontro el post"}
+    # return {"error": "No se encontro el post"}
 
 
 #  DELETE
