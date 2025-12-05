@@ -62,6 +62,7 @@ def create_post(post: PostCreate = Body(default=...)) -> dict[str, dict[str, int
 # PUT - {"title": "Hola desde FastAPI- (Actualizado con PUT)", "content": "Content actualizado"}
 #  {"title": "Prueba del PUT con Pydantic Y solamente el titulo!"}
 #  {"title": "Prueba del PUT con Pydantic", "content": "Esto contenido es actualizado!"}
+#  {"title": "Spam obtén una novia gratis"}
 @app.put(path="/posts/{post_id}")
 def update_post(post_id: int, data: PostUpdate) -> dict[str, dict[str, int | str] | str]:
     for post in BLOG_POST:

@@ -1,7 +1,7 @@
 #
 #  Import LIBRARIES
 # from fastapi import FastAPI
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 #  Import FILES
 #
@@ -27,6 +27,14 @@ class PostCreate(BaseModel):
         description="Contenido del post (mínimo 10 caracteres)",
         examples=["Este es un contenido válido porque tiene 10 caracteres o más"],
     )
+
+    @field_validator("title")
+    @classmethod
+    def not_allowed_title(cls, value: str) -> str:
+        if "spam" in value.lower():
+            raise ValueError("El título no puede contener la palabra: 'spam'")
+        return value
+
     # pass
 
 
