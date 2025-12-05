@@ -48,6 +48,8 @@ def get_posts(
 #  {"title": "Titulo de prueba con Pydantic", "content": "Pydantic es genial"}
 # {"title": "Emme",  "content": "Este contenido es disponible"}
 # {"title": "Post solo titulo"}
+# {"title": "Hi",  "content": "Anita"} genrates two errors!
+# {"title": "Hols mundo!",  "content": "Anita Lava la tina"}
 @app.post(path="/posts")
 def create_post(post: PostCreate = Body(default=...)) -> dict[str, dict[str, int | str] | str]:
     new_id: int = (int(BLOG_POST[-1]["id"]) + 1) if BLOG_POST else 1
