@@ -41,3 +41,20 @@ class PostCreate(BaseModel):
 class PostUpdate(BaseModel):
     title: str
     content: str | None = None
+
+
+class PostPublic(PostBase):
+    id: int
+    # title: str
+    # content: str = "Contenido no disponible"
+
+
+# class PostPublic(BaseModel):
+# id: int
+# title: str
+# content: str = "Contenido no disponible"
+
+
+class PostSummary(BaseModel):
+    id: int
+    title: str

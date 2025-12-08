@@ -4,7 +4,7 @@ from fastapi import Body, FastAPI, HTTPException, Query
 
 #  Import FILES
 from .data.post_db import BLOG_POST
-from .models.models import PostCreate, PostUpdate
+from .models.models import PostCreate, PostPublic, PostUpdate
 
 # PostBase
 #
@@ -18,17 +18,30 @@ def home() -> dict[str, str]:
     return {"message": "Bienvenidos a Mini Blog por Emagnu"}
 
 
-#  Query Parameters with list-comprehension
-@app.get(path="/posts")
+#  Query Parameters with list-comprehension - Query Param: Django
+@app.get(path="/posts", response_model=list[PostPublic])
 def list_posts(
     query_parm: str | None = Query(default=None, description="Texto para buscar por título"),
-) -> dict[str, list[dict[str, int | str]] | str | None]:
+) -> list[dict[str, int | str]]:
     if query_parm:
-        results: list[dict[str, int | str]] = [
-            post for post in BLOG_POST if query_parm.lower() in str(post["title"]).lower()
-        ]
-        return {"data": results, "query_parm": query_parm}
-    return {"data": BLOG_POST}
+        return [post for post in BLOG_POST if query_parm.lower() in str(post["title"]).lower()]
+        # results: list[dict[str, int | str]] = [
+        #     post for post in BLOG_POST if query_parm.lower() in str(post["title"]).lower()
+        # ]
+        # return results
+    return BLOG_POST
+
+
+# @app.get(path="/posts")
+# def list_posts(
+#     query_parm: str | None = Query(default=None, description="Texto para buscar por título"),
+# ) -> dict[str, list[dict[str, int | str]] | str | None]:
+#     if query_parm:
+#         results: list[dict[str, int | str]] = [
+#             post for post in BLOG_POST if query_parm.lower() in str(post["title"]).lower()
+#         ]
+#         return {"data": results, "query_parm": query_parm}
+#     return {"data": BLOG_POST}
 
 
 #  Path + query paraneters - Ricardo solution
