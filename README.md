@@ -59,8 +59,8 @@ uv run fastapi deploy
 
 
 
-
-
+[FastAPI - Sección 4.8 - Modelos de respuesta parte 1 Ricardo Cuéllar](https://www.youtube.com/watch?v=1FnfUAzlx6I)  
+[FastAPI - Sección 4.9 - Modelos de respuesta parte 2 Ricardo Cuéllar](https://www.youtube.com/watch?v=OFshMZdPn30)
 
 
 
