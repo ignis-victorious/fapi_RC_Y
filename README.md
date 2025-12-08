@@ -56,9 +56,6 @@ uv run fastapi deploy
 [FastAPI - Sección 4.5 - Campos opcionales y valores por defecto Ricardo Cuéllar](https://www.youtube.com/watch?v=8J8eXj18NxU)  
 [FastAPI - Sección 4.6 - Field y validaciones avanzadas Ricardo Cuéllar](https://www.youtube.com/watch?v=rZCuXGrO7Zg)  
 [FastAPI - Sección 4.7 - Validaciones personalizadas Ricardo Cuéllar](https://www.youtube.com/watch?v=BHKUbeBvu1U)  
-
-
-
 [FastAPI - Sección 4.8 - Modelos de respuesta parte 1 Ricardo Cuéllar](https://www.youtube.com/watch?v=1FnfUAzlx6I)  
 [FastAPI - Sección 4.9 - Modelos de respuesta parte 2 Ricardo Cuéllar](https://www.youtube.com/watch?v=OFshMZdPn30)
 
