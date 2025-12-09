@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field, field_validator
 
 class PostBase(BaseModel):
     title: str
-    content: str = "Contenido no disponible"
+    content: str  # = "Contenido no disponible"
 
 
 class PostCreate(BaseModel):
