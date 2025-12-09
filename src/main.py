@@ -3,10 +3,15 @@
 from fastapi import Body, FastAPI, HTTPException, Query
 
 #  Import FILES
+<<<<<<< HEAD
 from .data.post_db import BLOG_P_CLASS, BLOG_POST
 from .models.models import PostCreate, PostPublic, PostSummary, PostUpdate
 
 # , PostSummary
+=======
+from .data.post_db import BLOG_POST
+from .models.models import PostCreate, PostPublic, PostUpdate
+>>>>>>> 9e5528eac06b28b3862bcbabf3c4e15dbdd00ff1
 
 # PostBase
 #
@@ -24,10 +29,33 @@ def home() -> dict[str, str]:
 @app.get(path="/posts", response_model=list[PostPublic])
 def list_posts(
     query_parm: str | None = Query(default=None, description="Texto para buscar por título"),
+<<<<<<< HEAD
 ) -> list[PostPublic]:
     if query_parm:
         return [post for post in BLOG_P_CLASS if query_parm.lower() in str(post.title).lower()]
     return BLOG_P_CLASS
+=======
+) -> list[dict[str, int | str]]:
+    if query_parm:
+        return [post for post in BLOG_POST if query_parm.lower() in str(post["title"]).lower()]
+        # results: list[dict[str, int | str]] = [
+        #     post for post in BLOG_POST if query_parm.lower() in str(post["title"]).lower()
+        # ]
+        # return results
+    return BLOG_POST
+
+
+# @app.get(path="/posts")
+# def list_posts(
+#     query_parm: str | None = Query(default=None, description="Texto para buscar por título"),
+# ) -> dict[str, list[dict[str, int | str]] | str | None]:
+#     if query_parm:
+#         results: list[dict[str, int | str]] = [
+#             post for post in BLOG_POST if query_parm.lower() in str(post["title"]).lower()
+#         ]
+#         return {"data": results, "query_parm": query_parm}
+#     return {"data": BLOG_POST}
+>>>>>>> 9e5528eac06b28b3862bcbabf3c4e15dbdd00ff1
 
 
 #  Path + query paraneters - Ricardo solution
